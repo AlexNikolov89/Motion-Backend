@@ -6,7 +6,7 @@ services:
     restart: always
     env_file:
       - ./envs/dev.env
-    command: 'python manage.py runserver 0.0.0.0:8000'
+    command: 'sh /scripts/dev.sh'
 
     #these volumes pass the data from your computer to the docker container
     volumes:
