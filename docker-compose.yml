@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: motion_backend:latest
+    image: registry.gitlab.propulsion-home.ch/preparation-work/week07/day-05:latest
     restart: always
     env_file:
       - ./envs/dev.env

@@ -12,7 +12,7 @@ services:
       - static-files:/static-files
 
   backend:
-    image: docker_motion:latest
+    image: registry.gitlab.propulsion-home.ch/preparation-work/week07/day-05:latest
     restart: always
     env_file:
       - ./envs/prod.env
