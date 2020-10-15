@@ -33,6 +33,6 @@ services:
 
 #these volumes create a directory in your computer so that no matter what, they will not be deleted
 volumes:
-  media-files: media-files
-  static-files: static-files
-  postgres: postgres
+  media-files:
+  static-files:
+  postgres:
