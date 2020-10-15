@@ -1,0 +1,12 @@
+name: docker_motion
+
+dependencies:
+  - python==3.7
+  - psycopg2
+  - pip
+  - pip:
+      - djangorestframework==3.11.1
+      - djangorestframework-simplejwt==4.4.0
+      - Django
+      - gunicorn
+      - flake8
