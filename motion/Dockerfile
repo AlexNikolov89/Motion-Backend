@@ -7,11 +7,11 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     bzip2 \
     graphviz
 
-RUN mkdir -p /motion_backend
+RUN mkdir -p /backend
 
-COPY ./motion_backend/requirements.yml /motion_backend/requirements.yml
+COPY ./backend/requirements.yml /backend/requirements.yml
 
-RUN /opt/conda/bin/conda env create -f /motion_backend/requirements.yml
+RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 
 ENV PATH /opt/conda/envs/docker_motion/bin:$PATH
 
@@ -22,6 +22,6 @@ RUN mkdir -p /scripts
 COPY ./scripts /scripts
 RUN chmod +x ./scripts*
 
-COPY ./motion_backend /motion_backend
+COPY ./backend /backend
 
-WORKDIR /motion_backend
+WORKDIR /backend
