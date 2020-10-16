@@ -15,7 +15,7 @@ from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ex0)^gx2#uqao$p6aqv9(neig(w*4(d9t60r)uvl)c2jm_v9j+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
 
-
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
