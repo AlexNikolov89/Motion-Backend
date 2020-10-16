@@ -10,3 +10,4 @@ dependencies:
       - Django
       - gunicorn
       - flake8
+      - django-cors-headers
