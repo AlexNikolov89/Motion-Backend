@@ -20,8 +20,7 @@ import Apple from "../assets/svgs/apple.svg";
 import { StoreButton } from "../style/Content";
 import { AppleStore } from "../style/Content";
 import { GoogleStore } from "../style/Content";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-solid-svg-icons";
+import baseUrl from '../helpers/url'
 
 const LandingPage = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +38,7 @@ const LandingPage = () => {
       }),
       body: JSON.stringify({ email, password }),
     };
-    fetch("https://motion.propulsion-home.ch/backend/api/auth/token/", config)
+    fetch(`${baseUrl}/backend/api/auth/token/`, config)
       .then((res) => res.json())
       .then((data) => {
         if (data.access) {
