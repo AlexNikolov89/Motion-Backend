@@ -1,5 +1,7 @@
+import baseUrl from '../../helpers/url'
+
 export const registrationAction = (regEmail) => async (dispatch, getState) => {
-  const url = "https://motion.propulsion-home.ch/backend/api/auth/registration";
+  const url = `${baseUrl}/backend/api/auth/registration`;
   const config = {
     method: "POST",
     headers: new Headers({

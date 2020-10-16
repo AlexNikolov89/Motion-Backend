@@ -1,3 +1,5 @@
+import baseUrl from '../../helpers/url'
+
 export const postAction = () => async (dispatch, getState) => {
   const { token } = getState();
 
@@ -10,7 +12,7 @@ export const postAction = () => async (dispatch, getState) => {
     }),
   };
   const res = await fetch(
-    "https://motion.propulsion-home.ch/backend/api/social/posts/",
+    `${baseUrl}/backend/api/social/posts/`,
     config
   );
   const data = await res.json();
