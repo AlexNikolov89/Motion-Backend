@@ -24,4 +24,15 @@ RUN chmod +x ./scripts*
 
 COPY ./backend /backend
 
+RUN mkdir -p /frontend
+RUN mkdir -p /frontend_tmp
+
+WORKDIR frontend_tmp
+
+COPY ./frontend/package.json /frontend_tmp/
+RUN npm i
+COPY ./frontend /frontend_tmp
+RUN npm run build
+
+
 WORKDIR /backend
