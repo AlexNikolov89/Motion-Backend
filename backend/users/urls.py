@@ -1,7 +1,6 @@
 from django.urls import path
 
-from users.views import ListCreateUsersAPIView, ToggleFollowUserAPIView, ListFollowersUserAPIView, \
-    ListFolloweesUserAPIView
+from users.views import ListCreateUsersAPIView, ToggleFollowUserAPIView, ListFollowersUserAPIView, ListFolloweesUserAPIView
 
 urlpatterns = [
     path('', ListCreateUsersAPIView.as_view()),
