@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, GenericAPIView
+from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveAPIView
 from rest_framework.response import Response
 
 from posts.models import User
@@ -39,3 +39,10 @@ class ListFolloweesUserAPIView(ListCreateAPIView):
 
     def get_queryset(self):
         return self.request.user.followees
+
+class RetrieveLoggedInUserInfoAPIView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
