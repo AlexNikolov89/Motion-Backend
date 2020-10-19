@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     like_counter = serializers.SerializerMethodField()
 
-    def get_likes_counter(self, post):
+    def get_like_counter(self, post):
         return post.liked_by.all().count()
 
     author = UserSerializer(read_only = True)

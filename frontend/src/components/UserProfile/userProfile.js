@@ -100,7 +100,7 @@ const UserProfilePage = ({ userInfo }) => {
         </UserInfoContainer>
         <UserPostsWrapper>
           {posts.map((post) => (
-            <Post post={post} key={post.id} />
+            <Post post={post.author} key={post.id} />
           ))}
         </UserPostsWrapper>
       </UserProfileWrapper>

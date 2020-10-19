@@ -63,6 +63,16 @@ class ListOfUserPostAPIView(ListCreateAPIView):
     serializer_class = PostSerializer
 
 
+class ShownOwnPosts(ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset().filter(author=request.user)
+        serializer = PostSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
 
 
 
