@@ -145,3 +145,6 @@ MEDIA_ROOT = '/media-files/'
 MEDIA_URL = '/media-files/'
 
 AUTH_USER_MODEL = 'users.User'
+
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS=True

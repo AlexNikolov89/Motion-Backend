@@ -23,12 +23,12 @@ export const Post = ({ post }) => {
         </AvatarPost>
         <NameDate>
           <UserName>
-            {post.user.first_name} {post.user.last_name}
+            {post.author.username}
           </UserName>
           <Date>{post.created}</Date>
         </NameDate>
       </HeaderPost>
-      <PostContent>{post.content}</PostContent>
+      <PostContent>{post.text_content}</PostContent>
       <FooterIcon>
         <LikeIcon>
           <img src={Like} height="18px" width="20px" opacity="0.5" />
@@ -38,8 +38,9 @@ export const Post = ({ post }) => {
           <img src={Share} height="18px" width="20px" opacity="0.5" />
           <p>Share</p>
         </ShareIcon>
-        <Likes>0 Likes</Likes>
+        <Likes>{post.like_counter}</Likes>
       </FooterIcon>
     </PostWrapper>
   );
 };
+
