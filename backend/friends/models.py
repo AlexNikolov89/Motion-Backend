@@ -8,10 +8,10 @@ class Friend(models.Model):
     sender = models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='requests_sent', on_delete=models.CASCADE)
     receiver = models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='requests_received',
                                  on_delete=models.CASCADE)
-    status = models.CharField(max_length=1, choices=choices, default='P')
+    status = models.CharField(max_length=1, choices=choices, default='p')
 
-    #class Meta:
-     #   unique_together = ['sender', 'receiver']
+    class Meta:
+        unique_together = ['sender', 'receiver']
 
     def __str__(self):
         return f'{self.sender.username}-{self.receiver.username}-{self.status}'
