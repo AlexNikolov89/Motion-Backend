@@ -4,10 +4,12 @@ from friends.models import Friend
 
 from users.serializers import UserSerializer
 
+from users.serializers import UserfriendSerializer
+
 
 class FriendSerializer(serializers.ModelSerializer):
-    sender = UserSerializer()
-    receiver = UserSerializer()
+    sender = UserfriendSerializer()
+    receiver = UserfriendSerializer()
 
     class Meta:
         model = Friend

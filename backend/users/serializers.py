@@ -7,5 +7,10 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        #fields = ['id', 'username', 'first_name', 'last_name', 'location', 'followers', 'about', 'phone_num']
-        fields = ['id', 'username', 'followers']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'followers']
+
+
+class UserfriendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
