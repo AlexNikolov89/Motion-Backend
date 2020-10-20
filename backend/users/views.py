@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import filters
 from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveAPIView
 from rest_framework.response import Response
 
@@ -7,6 +8,8 @@ from users.serializers import UserSerializer
 
 
 class ListCreateUsersAPIView(ListCreateAPIView):
+    search_fields = ['first_name', 'last_name', 'username']
+    filter_backends = (filters.SearchFilter,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

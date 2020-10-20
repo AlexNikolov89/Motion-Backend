@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import filters
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
 from rest_framework.response import Response
 
@@ -59,6 +60,8 @@ class ListFollowersAPIView(ListCreateAPIView):
 
 
 class ListOfUserPostAPIView(ListCreateAPIView):
+    search_fields = ['title', 'text_content']
+    filter_backends = (filters.SearchFilter,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
