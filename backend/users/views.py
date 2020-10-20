@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import filters
 from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from posts.models import User
@@ -12,11 +13,13 @@ class ListCreateUsersAPIView(ListCreateAPIView):
     filter_backends = (filters.SearchFilter,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    parmission_classes = [IsAuthenticated]
 
 
 class ToggleFollowUserAPIView(GenericAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    lookup_field = 'id'
 
     def patch(self, request, *args, **kwargs):
         user = request.user
@@ -46,6 +49,7 @@ class ListFolloweesUserAPIView(ListCreateAPIView):
 class RetrieveLoggedInUserInfoAPIView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = []
 
     def get_object(self):
         return self.request.user

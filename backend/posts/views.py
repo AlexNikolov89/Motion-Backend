@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import filters
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from posts.models import Post
@@ -8,8 +9,11 @@ from posts.serializers import PostSerializer
 
 
 class ListCreatePostsAPIView(ListCreateAPIView):
+    search_fields = ['title', 'text_content']
+    filter_backends = (filters.SearchFilter,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    parser_classes = []
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -21,11 +25,15 @@ class ListCreatePostsAPIView(ListCreateAPIView):
 class RetrieveUpdateDestroyPostAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    lookup_field = 'id'
+    pemission_classes=[IsAuthenticated]
 
 
 class ToggleLikePostAPIView(GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = []
+    lookup_field = 'id'
 
     def post(self, request, *args, **kwargs):
         user = request.user
@@ -40,6 +48,7 @@ class ToggleLikePostAPIView(GenericAPIView):
 class ShowLikedPostAPIView(ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = []
 
     #def get_queryset(self):
      #   user_id = self.request.user.id
@@ -53,6 +62,11 @@ class ShowLikedPostAPIView(ListCreateAPIView):
 class ListFollowersAPIView(ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = []
+    lookup_field = 'id'
+
+    class Meta:
+        ordering = ['id']
 
     def get_queryset(self):
         post = Post.objects.filter(author__in=self.request.user.followees.all())
@@ -60,10 +74,9 @@ class ListFollowersAPIView(ListCreateAPIView):
 
 
 class ListOfUserPostAPIView(ListCreateAPIView):
-    search_fields = ['title', 'text_content']
-    filter_backends = (filters.SearchFilter,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = []
 
 
 class ShownOwnPosts(ListCreateAPIView):

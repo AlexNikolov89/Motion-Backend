@@ -2,8 +2,6 @@ from rest_framework import serializers
 
 from friends.models import Friend
 
-from users.serializers import UserSerializer
-
 from users.serializers import UserfriendSerializer
 
 
