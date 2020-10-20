@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'posts',
     'friends',
     'comments',
+    'registration_profiles'
+    ''
+    '',
 ]
 
 
