@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.migrations import serializer
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
+from django.core.mail import send_mail
 
 from registration_profiles.models import RegistrationProfile
 from rest_framework.response import Response
@@ -21,6 +22,14 @@ class Registration(GenericAPIView):
         new_user.save()
         registration = RegistrationProfile(user=new_user)
         registration.save()
+
+        #send_mail(
+         #   'Your Motion login code',
+          #  #f'Hello {}',
+           # 'aleksandra.propulsion@gmail.com',
+            #['to@example.com'],
+            #fail_silently=False,
+        #)
         return Response(status=200)
 
 class Validation(GenericAPIView):

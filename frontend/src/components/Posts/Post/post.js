@@ -15,6 +15,7 @@ import { ShareIcon } from "../../../style/FeedStyle";
 import { Likes } from "../../../style/FeedStyle";
 
 export const Post = ({ post }) => {
+  console.log(post.author)
   return (
     <PostWrapper>
       <HeaderPost>
@@ -23,7 +24,7 @@ export const Post = ({ post }) => {
         </AvatarPost>
         <NameDate>
           <UserName>
-            {post.author.username}
+            {post.username}
           </UserName>
           <Date>{post.created}</Date>
         </NameDate>

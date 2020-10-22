@@ -10,7 +10,7 @@ export const NewPostAction = (content) => async (dispatch, getState) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     }),
-    body: JSON.stringify({ content }),
+    body: JSON.stringify({ text_content:content }),
   };
   const response = await fetch(url, config);
   const data = await response.json();

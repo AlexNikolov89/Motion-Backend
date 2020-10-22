@@ -15,9 +15,11 @@ const NewPost = () => {
   const submitPost = () => {
     const getData = async () => {
       const data = await dispatch(NewPostAction(content));
-      console.log(data);
+      if (data) {
+        setContent('')
+      }
     };
-    getData();
+   
   };
 
   return (
