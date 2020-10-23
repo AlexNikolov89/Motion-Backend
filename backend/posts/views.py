@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from posts.models import Post
 from posts.serializers import PostSerializer
 
+from posts.permissions import IsAuthorOrReadOnly
+
 
 class ListCreatePostsAPIView(ListCreateAPIView):
     search_fields = ['title', 'text_content']
@@ -26,7 +28,7 @@ class RetrieveUpdateDestroyPostAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'id'
-    pemission_classes=[IsAuthenticated]
+    pemission_classes=[]
 
 
 class ToggleLikePostAPIView(GenericAPIView):

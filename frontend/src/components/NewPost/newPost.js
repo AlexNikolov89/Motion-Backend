@@ -6,31 +6,36 @@ import AvatarImg from "../../assets/users/jennifer.png";
 import { AvatarImage } from "../../style/FeedStyle";
 import { Input } from "../../style/FeedStyle";
 import { SendButton } from "../../style/FeedStyle";
-import NewPostAction from "../../store/actions/NewPostAction";
+import {newPostAction} from "../../store/actions/newPostAction";
+import {NEW_POST} from '../../store/actions/actionTypes'
 
 const NewPost = () => {
-  const [content, setContent] = useState("");
+  //const [content, setContent] = useState("");
+  const [newPost, setNewPost] = useState('')
   const dispatch = useDispatch();
 
-  const submitPost = () => {
-    const getData = async () => {
-      const data = await dispatch(NewPostAction(content));
-      console.log(data);
+  const onSubmitHandler = async e => {
+      e.preventDefault();
+      const data = `{"content": "${newPost}"}`;
+      dispatch(newPostAction('social/posts/', NEW_POST, data))
+      // const data = await dispatch(NewPostAction(content));
+      // console.log(data)
+      // if (data) {
+      //   setContent('')
     };
-    getData();
-  };
+   
 
   return (
     <NewPostContainer>
       <AvatarImage src={AvatarImg} height="71px" width="63px" />
       <Input>
         <input
-          onChange={(e) => setContent(e.currentTarget.value)}
+          onChange={onSubmitHandler}
           type="text"
           placeholder="What's on your mind, Aleksandra?"
         />
       </Input>
-      <SendButton onClick={submitPost}>
+      <SendButton>
         <img src={SendBtn} />
       </SendButton>
     </NewPostContainer>

@@ -1,2 +1,6 @@
 export const USER_LOGIN = "USER_LOGIN";
 export const NEW_POST = "NEW_POST";
+export const GET_SPECIFIC_POST = 'GET_SPECIFIC_POST_WITH_ID';
+export const SET_LIKE = 'SET_LIKE_ON_SPECIFIC_POST';
+export const SET_USER_ALL = 'SET_USERS_ALL_CHRONOLOGICAL_ORDER';
+export const SET_FOLLOW = 'TOGGLE_FOLLOW'

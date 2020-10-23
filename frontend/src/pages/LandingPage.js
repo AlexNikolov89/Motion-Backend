@@ -21,12 +21,14 @@ import { StoreButton } from "../style/Content";
 import { AppleStore } from "../style/Content";
 import { GoogleStore } from "../style/Content";
 import baseUrl from '../helpers/url'
+import {SignUp} from '../components/SignUp/SignUp'
 
 const LandingPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+  const [toggleSwitch, setToggleSwitch] = useState(true)
 
   const handleSubmit = (e) => {
     // console.log("test");
@@ -76,7 +78,7 @@ const LandingPage = () => {
       <ContentRight>
         <LoginContainer>
           <p>Don't have an account?</p>
-          <Button>SIGN UP</Button>
+          <Button onClick={() => setToggleSwitch(!toggleSwitch)}>{toggleSwitch ? <h2>SIGN UP</h2> : <h2>SIGN IN</h2>}</Button>
         </LoginContainer>
         <Form>
           <SignIn>Sign In</SignIn>

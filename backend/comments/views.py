@@ -10,6 +10,7 @@ class ListCreateCommentAPIView(ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     lookup_field = 'post_id'
+    permission_classes = []
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user, post_id=self.kwargs['post_id'])
