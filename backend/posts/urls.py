@@ -8,6 +8,7 @@ from posts.views import ShownOwnPosts
 
 urlpatterns = [
     path('', ListCreatePostsAPIView.as_view()),
+    path('<int:pk>/', ListCreatePostsAPIView.as_view()),
     path('<int:pk>/', RetrieveUpdateDestroyPostAPIView.as_view()),
     path('toggle-like/<int:pk>/', ToggleLikePostAPIView.as_view()),
     path('likes/', ShowLikedPostAPIView.as_view()),

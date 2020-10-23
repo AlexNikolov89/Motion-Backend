@@ -2,7 +2,7 @@ import baseUrl from '../../helpers/url'
 
 export const userInfoAction = () => async (dispatch, getState) => {
   const { token } = getState();
-  const url = `${baseUrl}/backend/api/users/14/`;
+  const url = `${baseUrl}/backend/api/users/`;
   const config = {
     method: "GET",
     headers: new Headers({
